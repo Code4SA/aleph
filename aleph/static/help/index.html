@@ -1,9 +1,13 @@
-<span id="title">How to search with Aleph</span>
+<span id="title">How to search opengazettes.org.za</span>
 
 <p>
-  Aleph stores a large number of documents from a variety of sources.
+  Open Gazettes stores a large number of documents from a variety of sources.
   In order to find the exact material you need, you may want to make
   use of some of it's advanced search operators.
+</p>
+
+<p>
+  This is is important when someone made a mistake typing up the document, but it's even more important for documents that have been scanned, and the text had to be reconstructed.
 </p>
 
 <h3>Advanced Search Operators</h3>
@@ -24,18 +28,20 @@
   the requested search terms within a given distance from each other:
 </p>
 
-<pre>"Bank America"~2</pre>
+<pre>"Call for Comment"~2</pre>
 
 <p>
-  This will find relevant matches with the terms "Bank" and "America"
-  occuring within two words from each other, such as "Bank of America",
-  "Bank in America", even "America has a Bank".
+  This will find relevant matches with the terms "Call" "for", and "Comment"
+  occuring within two words from each other, such as "Call for Comment",
+  "Call for public comment", even "Comment for a call".
 </p>
+
+<img src="/static/images/gazettes-call-for-public-comment.png" alt="Proximity search for Call for Comment" style="width: 100%; border: 1px solid black">
 
 <h4>Spelling Errors</h4>
 
 <p>
-  The same principle of proximity can also be applied inside of 
+  The same principle of proximity can also be applied inside of
   individual words. A search will then try to find not just the
   precise word you've specified, but also <strong>spelling variants</strong>.
   A spelling variant is defined by the number of spelling mistakes
@@ -51,6 +57,8 @@
   many false results.
 </p>
 
+<img src="/static/images/gazettes-typo.png" alt="Find Auction spelled as Auciton" style="border: 1px solid black">
+
 <h4>Composite queries</h4>
 
 <p>
@@ -61,8 +69,8 @@
   of the given search terms will also be shown.
 </p>
 <p>
-  If you want to make sure that a given term must show up in the results 
-  (or may never show up), you can put a plus sign ("+") in front of it 
+  If you want to make sure that a given term must show up in the results
+  (or may never show up), you can put a plus sign ("+") in front of it
   (or a minus sign, "-", to make sure all documents with the given word
   are removed).
 </p>
@@ -76,4 +84,3 @@
 </p>
 
 <pre>banana AND ("ice cream" OR gelato)</pre>
-
