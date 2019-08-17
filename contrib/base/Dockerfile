@@ -14,7 +14,7 @@ RUN apt-get -y dist-upgrade && apt-get install -y -q  \
         libopenjpeg-dev imagemagick-common imagemagick unoconv mdbtools \
         cabextract p7zip-full libboost-python-dev libgsf-1-dev
 RUN apt-get install -y -q  \
-        libtesseract-dev ruby-sass wkhtmltopdf vim libjpeg-dev libicu-dev \
+        libtesseract-dev ruby-sass vim libjpeg-dev libicu-dev \
         tesseract-ocr tesseract-ocr-bel tesseract-ocr-aze \
         tesseract-ocr-ces tesseract-ocr-eng tesseract-ocr-deu \
         tesseract-ocr-spa tesseract-ocr-fra tesseract-ocr-osd \
@@ -39,9 +39,9 @@ RUN echo "en_GB ISO-8859-1" >> /etc/locale.gen && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen
 
-# WebKit HTML to X install since the one that comes with distros is hellishly outdated.
-RUN wget --quiet -O /tmp/wkhtmltox.tar.xv http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz \
-    && tar -xf /tmp/wkhtmltox.tar.xv -C /opt && rm -f /tmp/wkhtmltox.tar.xv
+RUN wget --quiet https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb && \
+    dpkg -i wkhtmltox_0.12.5-1.stretch_amd64.deb && \
+    rm wkhtmltox_0.12.5-1.stretch_amd64.deb
 ENV WKHTMLTOPDF_BIN /opt/wkhtmltox/bin/wkhtmltopdf
 
 # Node dependencies

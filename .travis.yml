@@ -14,21 +14,22 @@ addons:
     packages:
       - python-software-properties
       - libtesseract-dev
-      - wkhtmltopdf
       - poppler-utils
       - libreoffice
       - djvulibre-bin
 env:
   global:
     - ALEPH_TEST_SETTINGS=$TRAVIS_BUILD_DIR/test_settings.py
-    - WKHTMLTOPDF_BIN=$TRAVIS_BUILD_DIR/wkhtmltox/bin/wkhtmltopdf
     - OAUTH_KEY=fake
     - OAUTH_SECRET=fake
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y tesseract-ocr-eng readpst
-  - wget --quiet -O /tmp/wkhtmltox.tar.xv http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-  - tar -xf /tmp/wkhtmltox.tar.xv -C $TRAVIS_BUILD_DIR
+  - wget --quiet https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb
+  - dpkg -i wkhtmltox_0.12.5-1.stretch_amd64.deb
+  - rm wkhtmltox_0.12.5-1.stretch_amd64.deb
+
+
 install:
   - gem install sass
   - pip install --upgrade setuptools pip
